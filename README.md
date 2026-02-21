@@ -1,51 +1,76 @@
-# SOC Alert Investigation Project (Online SIEM)
+SOC Alert Investigation Project (Online SIEM)
+Platform Used
 
-## Platform Used
-LetsDefend (Online SOC Simulation Platform)
+LetsDefend – Online SOC Simulation Platform
 
-## Objective
-To investigate a security alert generated in a SIEM environment and determine whether it is a True Positive or False Positive.
+Objective
 
-## Alert Details
-- Alert Name: CVE-2024-49138 Exploitation Detected
-- Severity: Medium
-- Detection Source: Windows Host Logs
+The goal of this project was to investigate a security alert in a SIEM environment and determine whether it was a True Positive or False Positive.
 
-## Investigation Steps
+Alert Information
 
-1. Reviewed alert summary and severity level.
-2. Checked affected host and user details.
-3. Analyzed process execution logs.
-4. Observed suspicious file path:
-   C:\temp\service_installer\svchost.exe
-5. Verified parent process (powershell.exe).
-6. Checked threat intelligence indicators.
+Alert Name: CVE-2024-49138 Exploitation Detected
 
-## Analysis
+Severity: Medium
 
-- The file name mimics legitimate Windows process (svchost.exe).
-- Executed from temporary directory (unusual behavior).
-- Parent process PowerShell indicates possible malicious execution.
+Log Source: Windows Host Logs
 
-## Verdict
+Investigation Process
 
-True Positive – Malicious activity detected.
+Checked the alert summary and understood why it was generated.
 
-## Recommended Actions
+Reviewed the affected system and user details.
 
-- Isolate affected machine.
-- Remove malicious file.
-- Reset user credentials.
-- Monitor for further suspicious activity.
+Analyzed the process execution logs.
 
-## Skills Demonstrated
+Found a suspicious file path:
 
-- SIEM Log Analysis
-- Threat Investigation
-- Incident Reporting
-- Windows Process Analysis
-- SOC Workflow Understanding
+C:\temp\service_installer\svchost.exe
 
-## Learning Outcome
+Checked the parent process and saw it was executed by PowerShell.
 
-Gained hands-on experience in analyzing alerts in a simulated SOC environment and identifying malicious behavior using log data.
+Compared the behavior with normal Windows processes.
+
+Analysis
+
+The file name svchost.exe looks like a legitimate Windows process.
+
+However, it was running from the temp folder, which is not normal.
+
+The parent process was PowerShell, which is commonly used in attacks.
+
+Attackers often copy names of real system files to hide malware.
+
+This behavior indicates suspicious activity.
+
+Final Decision
+
+After analyzing all logs and behavior, I concluded that this alert is a True Positive because it shows signs of malicious execution.
+
+Recommended Actions
+
+Isolate the affected system
+
+Remove the suspicious file
+
+Reset user credentials
+
+Monitor the system for further suspicious activity
+
+Skills Practiced
+
+SIEM Alert Investigation
+
+Log Analysis
+
+Windows Process Analysis
+
+Threat Identification
+
+Incident Reporting
+
+Learning Outcome
+
+In this project, I gained hands-on experience investigating a SOC alert.
+I learned how attackers disguise malware using legitimate process names.
+This helped improve my analytical and investigation skills
